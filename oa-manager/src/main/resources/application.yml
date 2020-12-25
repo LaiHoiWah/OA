@@ -1,0 +1,37 @@
+# project
+spring:
+  application:
+    name: ${spring.application.name}
+  profiles:
+    active: ${spring.profiles.active}
+
+server:
+  port: 8080
+
+# logback
+logging:
+  config: ${logging.config}
+
+# mybatis
+mybatis:
+  config-location: ${mybatis.config-location}
+
+# jdbc
+jdbc:
+  driverClassName: ${jdbc.driverClassName}
+  url: ${jdbc.url}
+  username: ${jdbc.username}
+  password: "${jdbc.password}"
+
+# druid
+druid:
+  maxActive: ${druid.maxActive}
+  initialSize: ${druid.initialSize}
+  maxWait: ${druid.maxWait}
+  minIdle: ${druid.minIdle}
+  timeBetweenEvictionRunsMillis: ${druid.timeBetweenEvictionRunsMillis}
+  testWhileIdle: ${druid.testWhileIdle}
+  poolPreparedStatements: ${druid.poolPreparedStatements}
+  maxOpenPreparedStatements: ${druid.maxOpenPreparedStatements}
+  connectionInitSqls: ${druid.connectionInitSqls}
+  defaultAutoCommit: ${druid.defaultAutoCommit}

@@ -1,0 +1,6 @@
+# project
+spring:
+  application:
+    name: ${spring.application.name}
+  profiles:
+    active: ${spring.profiles.active}
