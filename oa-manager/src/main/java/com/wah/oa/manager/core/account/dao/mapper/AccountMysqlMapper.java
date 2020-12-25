@@ -10,7 +10,7 @@ import java.util.List;
 
 @Mapper
 @Repository
-public interface AccountMapper{
+public interface AccountMysqlMapper{
 
     void save(Account account);
 

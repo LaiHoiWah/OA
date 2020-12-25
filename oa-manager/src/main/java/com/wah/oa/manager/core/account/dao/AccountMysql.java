@@ -3,7 +3,7 @@ package com.wah.oa.manager.core.account.dao;
 import com.wah.commons.utils.AssertUtils;
 import com.wah.commons.utils.SnowFlakeUtils;
 import com.wah.oa.manager.commons.security.exception.DataAccessException;
-import com.wah.oa.manager.core.account.dao.mapper.AccountMapper;
+import com.wah.oa.manager.core.account.dao.mapper.AccountMysqlMapper;
 import com.wah.oa.manager.core.account.entity.Account;
 import com.wah.persistence.mybatis.helper.criteria.Criteria;
 import com.wah.persistence.mybatis.helper.criteria.Restrictions;
@@ -15,12 +15,12 @@ import org.springframework.stereotype.Repository;
 import java.util.Date;
 
 @Repository
-public class AccountDao{
+public class AccountMysql{
 
-    private static final Logger LOG = LoggerFactory.getLogger(AccountDao.class);
+    private static final Logger LOG = LoggerFactory.getLogger(AccountMysql.class);
 
     @Autowired
-    private AccountMapper mapper;
+    private AccountMysqlMapper mapper;
 
     @Autowired
     private SnowFlakeUtils snowFlakeUtils;

@@ -3,9 +3,10 @@ package com.wah.oa.manager.core.account.dao;
 import com.wah.commons.utils.AssertUtils;
 import com.wah.commons.utils.SnowFlakeUtils;
 import com.wah.oa.manager.commons.security.exception.DataAccessException;
-import com.wah.oa.manager.core.account.dao.mapper.UserMapper;
-import com.wah.oa.manager.core.account.entity.Account;
+import com.wah.oa.manager.core.account.dao.mapper.UserMysqlMapper;
 import com.wah.oa.manager.core.account.entity.User;
+import com.wah.persistence.mybatis.helper.criteria.Criteria;
+import com.wah.persistence.mybatis.helper.criteria.Restrictions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,12 +15,12 @@ import org.springframework.stereotype.Repository;
 import java.util.Date;
 
 @Repository
-public class UserDao{
+public class UserMysql{
 
-    private static final Logger LOG = LoggerFactory.getLogger(UserDao.class);
+    private static final Logger LOG = LoggerFactory.getLogger(UserMysql.class);
 
     @Autowired
-    private UserMapper mapper;
+    private UserMysqlMapper mapper;
 
     @Autowired
     private SnowFlakeUtils snowFlakeUtils;
@@ -48,6 +49,36 @@ public class UserDao{
             user.setUpdateTime(new Date());
 
             mapper.update(user);
+        }catch(Exception e){
+            LOG.error(e.getMessage(), e);
+            throw new DataAccessException(e.getMessage(), e);
+        }
+    }
+
+    public boolean existByAccountId(String accountId){
+        AssertUtils.hasText(accountId, "用户关联的账户ID不能为空");
+
+        try{
+            Criteria criteria = new Criteria();
+            criteria.and(Restrictions.where("accountId").eq(accountId));
+
+            Long total = mapper.count(criteria);
+
+            return (total != null && total > 0);
+        }catch(Exception e){
+            LOG.error(e.getMessage(), e);
+            throw new DataAccessException(e.getMessage(), e);
+        }
+    }
+
+    public User getByAccountId(String accountId){
+        AssertUtils.hasText(accountId, "用户关联的账户ID不能为空");
+
+        try{
+            Criteria criteria = new Criteria();
+            criteria.and(Restrictions.where("accountId").eq(accountId));
+
+            return mapper.get(criteria);
         }catch(Exception e){
             LOG.error(e.getMessage(), e);
             throw new DataAccessException(e.getMessage(), e);
