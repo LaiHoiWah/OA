@@ -35,3 +35,8 @@ druid:
   maxOpenPreparedStatements: ${druid.maxOpenPreparedStatements}
   connectionInitSqls: ${druid.connectionInitSqls}
   defaultAutoCommit: ${druid.defaultAutoCommit}
+
+# snowflake
+snowflake:
+  centerId: ${snowflake.centerId}
+  workerId: ${snowflake.workerId}

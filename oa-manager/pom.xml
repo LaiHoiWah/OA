@@ -66,6 +66,11 @@
             <artifactId>commons</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.wah</groupId>
+            <artifactId>persistence-mybatis-helper</artifactId>
+        </dependency>
+
         <!-- lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>

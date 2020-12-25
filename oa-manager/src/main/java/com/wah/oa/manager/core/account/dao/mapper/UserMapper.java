@@ -1,6 +1,6 @@
 package com.wah.oa.manager.core.account.dao.mapper;
 
-import com.wah.oa.manager.core.account.entity.Account;
+import com.wah.oa.manager.core.account.entity.User;
 import com.wah.persistence.mybatis.helper.criteria.Criteria;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -10,15 +10,15 @@ import java.util.List;
 
 @Mapper
 @Repository
-public interface AccountMapper{
+public interface UserMapper{
 
-    void save(Account account);
+    void save(User user);
 
-    void update(Account account);
+    void update(User user);
 
-    Account get(@Param("params") Criteria criteria);
+    User get(@Param("params") Criteria criteria);
 
-    List<Account> find(@Param("params") Criteria criteria);
+    List<User> find(@Param("params") Criteria criteria);
 
     Long count(@Param("params") Criteria criteria);
 }
