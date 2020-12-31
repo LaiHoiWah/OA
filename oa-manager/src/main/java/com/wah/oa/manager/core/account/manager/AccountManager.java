@@ -14,7 +14,7 @@ public class AccountManager{
     @Autowired
     private AccountMysql accountMysql;
 
-    public void register(String username, String password){
+    public void save(String username, String password){
         AssertUtils.hasText(username, "账户登录名不能为空");
         AssertUtils.hasText(password, "账户密码不能为空");
 
